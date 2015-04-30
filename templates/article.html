@@ -1,0 +1,7 @@
+<ion-view view-title="{{article.title}}">
+  <ion-content style="padding: 10px">
+    <h3>{{article.title}}</h3>
+    <div ng-bind-html="trust(article.description)"></div>
+    <div ng-bind-html="trust(article.content)"></div>
+  </ion-content>
+</ion-view>
