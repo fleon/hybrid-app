@@ -3,7 +3,8 @@
 'use strict';
 
 function worker() {
-	importScripts(location.origin + '/bower_components/lunr.js/lunr.js');
+	// hack
+	importScripts(location.origin + '/hybrid-app/bower_components/lunr.js/lunr.js');
 
 	function fnFromString(str) {
 		try {
