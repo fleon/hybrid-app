@@ -31,11 +31,11 @@ angular.module('hybrid.controllers', [])
 
 .controller('ArticlesCtrl', function ($scope) {
 	$scope.settings = {
-		itemsLimit: 50
+		itemsLimit: 20
 	};
 
 	$scope.increaseItemsLimit = function () {
-		$scope.settings.itemsLimit += 50;
+		$scope.settings.itemsLimit += 20;
 		$scope.$broadcast('scroll.infiniteScrollComplete');
 	};
 })
