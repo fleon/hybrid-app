@@ -4,8 +4,8 @@
 
 function worker() {
 	// hack
-	//importScripts(location.origin + '/hybrid-app/bower_components/lunr.js/lunr.js');
-	importScripts(location.origin + '/bower_components/lunr.js/lunr.js');
+	importScripts(location.origin + '/hybrid-app/bower_components/lunr.js/lunr.js');
+	//importScripts(location.origin + '/bower_components/lunr.js/lunr.js');
 
 	function fnFromString(str) {
 		try {
@@ -18,10 +18,6 @@ function worker() {
 	}
 
 	var index;
-
-	if (self.searchIndex) {
-		index = lunr.Index.load(self.searchIndex);
-	}
 
 	self.addEventListener('message', function (e) {
 		var cmd = e.data[0];
