@@ -1,6 +1,4 @@
-// hack
-importScripts(location.origin + '/hybrid-app/bower_components/lunr.js/lunr.js');
-//importScripts(location.origin + '/bower_components/lunr.js/lunr.js');
+importScripts('../bower_components/lunr.js/lunr.js');
 
 function fnFromString(str) {
 	try {

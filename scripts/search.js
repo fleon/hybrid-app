@@ -5,7 +5,7 @@
 angular.module('hybrid.search', [])
 .factory('SearchWorker', function ($q) {
 	function SearchWorker() {
-		this.worker = new Worker('/scripts/search-worker.js');
+		this.worker = new Worker('./scripts/search-worker.js');
 	}
 
 	SearchWorker.prototype.createIndex = function (fn) {
