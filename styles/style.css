@@ -1,1 +1,32 @@
-/* Empty. Add your own CSS if you like */
+.accordion-item {
+	margin: 5px 0;
+}
+
+.accordion-item .icon {
+	padding-right: 10px;
+}
+
+.accordion-item .item-stable {
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.accordion-item .item-accordion {
+	padding: 5px 20px;
+}
+
+.accordion-item ul {
+	list-style: disc;
+	padding-left: 20px;
+}
+
+.accordion-item ol {
+	list-style: decimal;
+	padding-left: 20px;
+}
+
+.loader {
+	margin: 10px auto;
+	display: block;
+	width: 64px;
+}

@@ -1,7 +1,8 @@
 <ion-view view-title="{{article.title}}">
   <ion-content style="padding: 10px">
+    <ion-spinner icon="ios" ng-if="!articles" class="loader"></ion-spinner>
     <h3>{{article.title}}</h3>
-    <div ng-bind-html="trust(article.description)"></div>
-    <div ng-bind-html="trust(article.content)"></div>
+    <div bind-dynamic-html="article.description"></div>
+    <div bind-dynamic-html="article.content"></div>
   </ion-content>
 </ion-view>

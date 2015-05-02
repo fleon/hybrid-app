@@ -1,6 +1,7 @@
 <ion-view view-title="Articles">
   <ion-content>
-    <ion-list>
+    <ion-spinner icon="ios" ng-if="!articles" class="loader"></ion-spinner>
+    <ion-list ng-if="articles">
       <ion-item class="item-input-inset">
         <label class="item-input-wrapper" ng-controller="SearchCtrl">
           <i class="icon ion-ios-search placeholder-icon"></i>

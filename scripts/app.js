@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('hybrid', ['ionic', 'hybrid.controllers', 'hybrid.search', 'hybrid.utils'])
+angular.module('hybrid', ['ionic', 'hybrid.controllers', 'hybrid.search', 'hybrid.utils', 'hybrid.directives'])
 
 .run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {

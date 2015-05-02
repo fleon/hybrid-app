@@ -22,7 +22,6 @@ this.addEventListener('message', function (e) {
 		case 'loadIndex':
 			var t = Date.now();
 			index = lunr.Index.load(JSON.parse(what));
-			console.log('index load', Date.now() - t);
 			break;
 		case 'add':
 			index.add(what);
@@ -30,7 +29,7 @@ this.addEventListener('message', function (e) {
 		case 'search':
 			var t = Date.now();
 			this.postMessage(['searchComplete', what, index.search(what)]);
-			console.log('search complete', Date.now() - t);
+			throw new Error('search complete (' + what + '): ' + (Date.now() - t));
 			break;
 	}
 });

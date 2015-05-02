@@ -45,9 +45,17 @@ angular.module('hybrid.controllers', [])
 		$scope.article = $scope.articlesHash[$stateParams.id];
 	});
 
-	$scope.trust = function (content) {
-		return $sce.trustAsHtml(content);
+	$scope.toggleSection = function (id) {
+		if ($scope.isSectionShown(id)) {
+			delete $scope.activeSectionId;
+		} else {
+			$scope.activeSectionId = id;
+		}
 	};
+
+	$scope.isSectionShown = function (id) {
+		return id === $scope.activeSectionId;
+	}
 })
 
 .controller('SearchCtrl', function ($scope, functionUtils) {
@@ -70,6 +78,6 @@ angular.module('hybrid.controllers', [])
 			}));
 			$scope.searching = false;
 		});
-	}, 500));
+	}, 1000));
 })
 ;
