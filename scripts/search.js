@@ -19,7 +19,7 @@ function worker() {
 
 	var index;
 
-	self.addEventListener('message', function (e) {
+	this.addEventListener('message', function (e) {
 		var cmd = e.data[0];
 		var what = e.data[1];
 		switch (cmd) {
@@ -36,7 +36,7 @@ function worker() {
 				break;
 			case 'search':
 				var t = performance.now();
-				self.postMessage(['searchComplete', what, index.search(what)]);
+				this.postMessage(['searchComplete', what, index.search(what)]);
 				console.log('search complete', performance.now() - t);
 				break;
 		}
