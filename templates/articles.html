@@ -8,9 +8,10 @@
           <ion-spinner icon="ios-small" class="placeholder-icon" ng-if="searching"></ion-spinner>
         </label>
       </ion-item>
-      <ion-item ng-repeat="article in articles" ui-sref="app.article({id: article.id})">
+      <ion-item ng-repeat="article in articles | limitTo:settings.itemsLimit" ui-sref="app.article({id: article.id})">
         {{article.title}}
       </ion-item>
+      <ion-infinite-scroll on-infinite="increaseItemsLimit();" distance="10%"></ion-infinite-scroll>
     </ion-list>
   </ion-content>
 </ion-view>

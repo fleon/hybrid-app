@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('hybrid', ['ionic', 'hybrid.controllers', 'hybrid.search'])
+angular.module('hybrid', ['ionic', 'hybrid.controllers', 'hybrid.search', 'hybrid.utils'])
 
 .run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {
@@ -26,23 +26,6 @@ angular.module('hybrid', ['ionic', 'hybrid.controllers', 'hybrid.search'])
 		controller: 'AppCtrl'
 	})
 
-	.state('app.search', {
-		url: '/search',
-		views: {
-			'menuContent': {
-				templateUrl: 'templates/search.html'
-			}
-		}
-	})
-
-	.state('app.browse', {
-		url: '/browse',
-		views: {
-			'menuContent': {
-				templateUrl: 'templates/browse.html'
-			}
-		}
-	})
 	.state('app.articles', {
 		url: '/articles',
 		views: {

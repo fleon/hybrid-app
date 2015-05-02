@@ -4,7 +4,8 @@
 
 function worker() {
 	// hack
-	importScripts(location.origin + '/hybrid-app/bower_components/lunr.js/lunr.js');
+	//importScripts(location.origin + '/hybrid-app/bower_components/lunr.js/lunr.js');
+	importScripts(location.origin + '/bower_components/lunr.js/lunr.js');
 
 	function fnFromString(str) {
 		try {
@@ -18,18 +19,29 @@ function worker() {
 
 	var index;
 
+	if (self.searchIndex) {
+		index = lunr.Index.load(self.searchIndex);
+	}
+
 	self.addEventListener('message', function (e) {
 		var cmd = e.data[0];
 		var what = e.data[1];
 		switch (cmd) {
-			case 'index':
+			case 'createIndex':
 				index = lunr(fnFromString(what));
+				break;
+			case 'loadIndex':
+				var t = performance.now();
+				index = lunr.Index.load(JSON.parse(what));
+				console.log('index load', performance.now() - t);
 				break;
 			case 'add':
 				index.add(what);
 				break;
 			case 'search':
+				var t = performance.now();
 				self.postMessage(['searchComplete', what, index.search(what)]);
+				console.log('search complete', performance.now() - t);
 				break;
 		}
 	});
@@ -43,11 +55,15 @@ angular.module('hybrid.search', [])
 		this.worker = new Worker(blobURL);
 	}
 
-	SearchWorker.prototype.index = function (fn) {
-		this.worker.postMessage(['index', fn.toString()]);
+	SearchWorker.prototype.createIndex = function (fn) {
+		this.worker.postMessage(['createIndex', fn.toString()]);
 	};
 
-	SearchWorker.prototype.add = function (what) {
+	SearchWorker.prototype.loadIndex = function (what) {
+		this.worker.postMessage(['loadIndex', what]);
+	};
+
+	SearchWorker.prototype.addToIndex = function (what) {
 		this.worker.postMessage(['add', what]);
 	};
 
